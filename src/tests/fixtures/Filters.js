@@ -1,20 +1,17 @@
-import moment from 'moment'
-
+import moment from 'moment';
 
 const filters = {
-    text: '',
-    sortBy: 'date_recent',
-    startDate: undefined,
-    endDate: undefined
-}
-
+  text: '',
+  sortBy: 'date',
+  startDate: undefined,
+  endDate: undefined
+};
 
 const altFilters = {
-    text: 'm',
-    sortBy: 'amount_lowest',
-    startDate: moment(0).add(44, 'years'),
-    endDate: moment(0).add(50, 'years')
-}
+  text: 'bills',
+  sortBy: 'amount',
+  startDate: moment(0),
+  endDate: moment(0).add(3, 'days')
+};
 
-
-export { altFilters, filters}
+export { filters, altFilters };

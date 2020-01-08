@@ -1,13 +1,9 @@
-import React from 'react'
-import { shallow } from 'enzyme'
+import React from 'react';
+import { shallow } from 'enzyme';
+import expenses from '../fixtures/expenses';
+import ExpenseListItem from '../../components/ExpenseListItem';
 
-import ExpenseListItem from '../../views/ExpenseListItem'
-import Expenses from '../fixtures/Expenses'
-
-
-
-test('Should render ExpenseListItem correctly', () => {
-    const Expense = Expenses[1]
-    const wrapper = shallow(<ExpenseListItem { ...Expense } />)
-    expect(wrapper).toMatchSnapshot()
-})
+test('should render ExpenseListItem correctly', () => {
+  const wrapper = shallow(<ExpenseListItem {...expenses[0]} />);
+  expect(wrapper).toMatchSnapshot();
+});

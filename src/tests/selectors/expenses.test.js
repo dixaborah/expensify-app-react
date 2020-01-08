@@ -1,64 +1,58 @@
-import SelectExpenses from '../../selectors/expenses'
-import Expenses from '../fixtures/Expenses'
-import moment from 'moment'
+import moment from 'moment';
+import selectExpenses from '../../selectors/expenses';
+import expenses from '../fixtures/expenses';
 
+test('should filter by text value', () => {
+  const filters = {
+    text: 'e',
+    sortBy: 'date',
+    startDate: undefined,
+    endDate: undefined
+  };
+  const result = selectExpenses(expenses, filters);
+  expect(result).toEqual([expenses[2], expenses[1]]);
+});
 
+test('should filter by startDate', () => {
+  const filters = {
+    text: '',
+    sortBy: 'date',
+    startDate: moment(0),
+    endDate: undefined
+  };
+  const result = selectExpenses(expenses, filters);
+  expect(result).toEqual([expenses[2], expenses[0]]);
+});
 
-test('Set up filter by text value', () => {
-    const filters = {
-        text: 'n',
-        sortBy: 'date_recent',
-        startDate: undefined,
-        endDate: undefined
-    }
-    const state = SelectExpenses(Expenses, filters)
-    expect(state).toEqual([Expenses[2], Expenses[1]])
-})
+test('should filter by endDate', () => {
+  const filters = {
+    text: '',
+    sortBy: 'date',
+    startDate: undefined,
+    endDate: moment(0).add(2, 'days')
+  };
+  const result = selectExpenses(expenses, filters);
+  expect(result).toEqual([expenses[0], expenses[1]]);
+});
 
+test('should sort by date', () => {
+  const filters = {
+    text: '',
+    sortBy: 'date',
+    startDate: undefined,
+    endDate: undefined
+  };
+  const result = selectExpenses(expenses, filters);
+  expect(result).toEqual([expenses[2], expenses[0], expenses[1]]);
+});
 
-test('Set up filter by startDate value', () => {
-    const filters = {
-        text: '',
-        sortBy: 'date_recent',
-        startDate: moment(0).add(47, 'years'),
-        endDate: undefined
-    }
-    const state = SelectExpenses(Expenses, filters)
-    expect(state).toEqual([Expenses[2], Expenses[1]])
-})
-
-
-test('Set up filter by endDate value', () => {
-    const filters = {
-        text: '',
-        sortBy: 'date_recent',
-        startDate: undefined,
-        endDate: moment(0).add(48, 'years')
-    }
-    const state = SelectExpenses(Expenses, filters)
-    expect(state).toEqual([Expenses[1], Expenses[0]])
-})
-
-
-test('Set up filter by sortBy "amount_highest', () => {
-    const filters = {
-        text: '',
-        sortBy: 'amount_highest',
-        startDate: undefined,
-        endDate: undefined
-    }
-    const state = SelectExpenses(Expenses, filters)
-    expect(state).toEqual(Expenses.reverse())
-})
-
-
-test('Set up filter by sortBy "date_oldest', () => {
-    const filters = {
-        text: '',
-        sortBy: 'date_oldest',
-        startDate: undefined,
-        endDate: undefined
-    }
-    const state = SelectExpenses(Expenses, filters)
-    expect(state).toEqual(Expenses.reverse())
-})
+test('should sort by amount', () => {
+  const filters = {
+    text: '',
+    sortBy: 'amount',
+    startDate: undefined,
+    endDate: undefined
+  };
+  const result = selectExpenses(expenses, filters);
+  expect(result).toEqual([expenses[1], expenses[2], expenses[0]]);
+});

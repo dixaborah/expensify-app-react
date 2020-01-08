@@ -1,31 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import AppRouter from './routers/AppRouter';
+import configureStore from './store/configureStore';
+import 'normalize.css/normalize.css';
+import './styles/styles.scss';
+import 'react-dates/initialize'
+import 'react-dates/lib/css/_datepicker.css';
 
-import AppRouter from './routes/AppRouter'
-import configureStore from './store/configureStore'
-import { addExpense } from './actions/expenses'
+const store = configureStore();
 
-import 'normalize.css/normalize.css'
-import 'react-dates/lib/css/_datepicker.css'
-// import './styles/styles.scss'
+const jsx = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+);
 
-
-
-const store = configureStore()
-
-// Getting Expenses Array from
-import Expenses from './tests/fixtures/Expenses'
-
-store.dispatch(addExpense(Expenses[0]))
-store.dispatch(addExpense(Expenses[1]))
-store.dispatch(addExpense(Expenses[2]))
-
-
-const JSX = (
-    <Provider store={store}>
-        <AppRouter />
-    </Provider>
-)
-
-ReactDOM.render(JSX, document.getElementById('app'))
+ReactDOM.render(jsx, document.getElementById('app'));

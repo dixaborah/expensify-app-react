@@ -1,24 +1,21 @@
 import moment from 'moment'
 
-
-
-
 export default [{
-    id: 1,
-    amount: 195,
-    createdAt: moment(0).add(45, 'years').valueOf(),
-    description: 'Gum',
-    note: ''
-},{
-    id: 2,
-    amount: 109500,
-    createdAt: moment(0).add(47, 'years').valueOf(),
-    description: 'Rent',
-    note: ''
-},{
-    id: 3,
-    amount: 95075900,
-    createdAt: moment(0).add(49, 'years').valueOf(),
-    description: 'Lamboghini',
-    note: ''
-}]
+  id: '1',
+  description: 'Gum',
+  note: '',
+  amount: 195,
+  createdAt: 0
+}, {
+  id: '2',
+  description: 'Rent',
+  note: '',
+  amount: 109500,
+  createdAt: moment(0).subtract(4, 'days').valueOf()
+}, {
+  id: '3',
+  description: 'Credit Card',
+  note: '',
+  amount: 4500,
+  createdAt: moment(0).add(4, 'days').valueOf()
+}];
