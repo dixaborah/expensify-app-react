@@ -26,7 +26,7 @@ module.exports = (env) => {
                 use: [{
                     loader: MiniCssExtract.loader,
                     options: {
-                        publicPath: '/public/styles'
+                        publicPath: '/public'
                     },
                 },{
                     loader: 'css-loader',
@@ -45,7 +45,6 @@ module.exports = (env) => {
         devServer: {
             contentBase: path.resolve(__dirname, 'public'),
             historyApiFallback: true,
-            publicPath: '/scripts/'
         }
     }
 }
