@@ -10,4 +10,4 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'))
 })
 
-app.listen(path, () => { console.log('Server running') })
+app.listen(port, () => { console.log('Server running') })
