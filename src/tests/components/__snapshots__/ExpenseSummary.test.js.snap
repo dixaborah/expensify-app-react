@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should 1`] = `
+<h1>
+  Viewing 
+  5
+   
+  expenses
+   totalling 
+  $77.55
+</h1>
+`;
